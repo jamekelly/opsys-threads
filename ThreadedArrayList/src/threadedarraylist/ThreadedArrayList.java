@@ -6,6 +6,7 @@
 package threadedarraylist;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  *
@@ -13,25 +14,17 @@ import java.util.ArrayList;
  */
 public class ThreadedArrayList {
     
-    private ArrayList<Integer> listA = new ArrayList<>();
-    private ArrayList<Integer> listB = new ArrayList<>();
+    private final ArrayList<Integer> listA = new ArrayList<>();
+    private final ArrayList<Integer> listB = new ArrayList<>();
     
     public synchronized void addToListA() {
-        if(listA.isEmpty()){
-            listA.add(0);
-        } else {
-            Integer i = listA.get(listA.size() - 1) + 1;
-            listA.add(i);
-        }
+        Random r = new Random();
+        listA.add(r.nextInt(100));
     }
     
     public synchronized void addToListB() {
-        if(listB.isEmpty()){
-            listB.add(0);
-        } else {
-            Integer i = listB.get(listB.size() - 1) + 1;
-            listB.add(i);
-        }
+        Random r = new Random();
+        listB.add(r.nextInt(100));
     }
 
     public ArrayList<Integer> getListA() {
@@ -59,7 +52,7 @@ public class ThreadedArrayList {
         v.join();
         long end = System.currentTimeMillis();
         long totalTime = end - start;
-        System.out.println(totalTime);
+        System.out.println("total time: " + totalTime + " ms");
     }
     
 }

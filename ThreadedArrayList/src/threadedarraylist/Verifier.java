@@ -17,14 +17,15 @@ public class Verifier extends Thread{
         this.tal = tal;
     }
     
+    // Make sure there are 10000 elements in the list
     public void verify() {
         if(this.tal.getListA().size() == 10000 && this.tal.getListB().size() == 10000) {
             System.out.println("Success!");
         } else {
             System.out.println("Failed");
-            System.out.println("A: " + tal.getListA().size());
-            System.out.println("B: " + tal.getListB().size());
         }
+        System.out.println("A: " + tal.getListA().size());
+        System.out.println("B: " + tal.getListB().size());
     }
     
     @Override
